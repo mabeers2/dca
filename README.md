@@ -33,6 +33,7 @@ This is basically a union of the [0-1 knapsack problem](https://en.wikipedia.org
 
 ### Constraint 1: There must be an edge leaving the entrance
 Suppose index $1$ corresponds to the entrance. The constraint is then: 
+
 $$
 \sum_{j} y_{1j} = 1
 $$ 
@@ -67,9 +68,10 @@ $$
 ### Constraint 6: MTZ Constraint 
 The subtour elimination constraint is the same as the normal MTZ formulation of TSP. Again suppose the entrance corresponds to index $1$.  As with the normal MTZ approach to TSP, we want to introduce dummy variables $u_k$ that impose the constraints that $u_1 = 1$ and  $u_j \geq u_i + 1$ if $y_{ij} = 1$ **unless** $j=1$. Variable $u_j$ keeps track of the position of vertex $j$ in the cycle, relative to the entrance. 
 
-Any cycle that doesn't include the entrance will not be able to satisfy this constraint. As an example, consider the hypothetical cycle through vertices $(3,5,8,9,3)$. Here $u_5 \geq u_3 + 1$,$u_8 \geq u_5 + 1$,etc. Therefore, $u_9 \geq u_3 + 3$. But there is an edge in the hypothetical cycle connecting vertices $9$ and $3$, which means that $u_3 \geq u_9 + 1$, which contradicts the previous constraint. So, cycles that don't include a specific vertex (here the entrance) are impossible. 
+Any cycle that doesn't include the entrance will not be able to satisfy this constraint. As an example, consider the hypothetical cycle through vertices $(3,5,8,9,3)$. Here $u_5 \geq u_3 + 1$, $u_8 \geq u_5 + 1$ ,etc. Therefore, $u_9 \geq u_3 + 3$. But there is an edge in the hypothetical cycle connecting vertices $9$ and $3$, which means that $u_3 \geq u_9 + 1$, which contradicts the previous constraint. So, cycles that don't include a specific vertex (here the entrance) are impossible. 
 
 To encode the above ideas, a big-M formulation is used as below, where $n$ is the number of rides. 
+
 $$
 u_i - u_j + 1 \leq (n-1)(1-y_{ij})\quad 2 \leq i\neq j\leq n
 $$
