@@ -1,0 +1,15 @@
+[project]
+name = "disney"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "folium>=0.20.0",
+    "gurobipy>=13.0.1",
+    "matplotlib>=3.10.8",
+    "pandas>=3.0.1",
+    "pyomo>=6.10.0",
+    "selenium>=4.44.0",
+    "tabulate>=0.10.0",
+]
